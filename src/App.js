@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import { setActionCreator } from './state/easterEgg';
+import PaintedEgg from './PaintedEgg';
+import Egg from './Egg';
 
-function App() {
+const App = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {
+        props._isPainted ?
+          <PaintedEgg
+            onClickPaintEgg={props._onClickPaintEgg}
+          />
+          : <Egg
+            onClickPaintEgg={props._onClickPaintEgg}
+          />
+      }
     </div>
-  );
-}
+  )
+};
 
-export default App;
+const mapStateToProps = state => ({
+  _isPainted: state.easterEgg.isPainted,
+});
+
+const mapDispatchToProps = dispatch => ({
+  _onClickPaintEgg: () => dispatch(setActionCreator()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
