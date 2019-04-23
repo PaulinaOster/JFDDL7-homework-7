@@ -6,7 +6,9 @@ import Egg from './Egg';
 
 const App = (props) => {
   return (
-    <div>
+    <div
+      className="container"
+    >
       {
         props._isPainted ?
           <PaintedEgg

@@ -3,12 +3,18 @@ import egg from './egg.svg';
 
 const Egg = (props) => {
     return (
-        <div>
-            <h1>Kliknij by pomalować jajko</h1>
+        <div
+            className="container"
+        >
+            <h1>Kliknij w jajko, by pomalować jajko</h1>
             <div
                 onClick={props.onClickPaintEgg}
             >
-                <img src={egg} alt={'niepomalowane jajko'} />
+                <img
+                    className="image-container"
+                    src={egg}
+                    alt={'niepomalowane jajko'}
+                />
             </div>
         </div>
     )
